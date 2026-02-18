@@ -5,7 +5,7 @@
 
 ## Description
 <!-- Please include SEO-friendly description -->
-This repository provides the basic example of Financial Integration Service APIs used by SAP Concur customers. The calls within the collection demonstrate 
+This repository provides the basic example of Concur User Provisioning Service APIs used by SAP Concur customers. The calls within the collection demonstrate 
 the following process steps: 
 1) User Creation in Bulk
 2) Status Check for User Creation (success or fail)
