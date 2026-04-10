@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "8a9db0fb-f993-455b-8da4-79200757afe7",
+		"name": "Concur User Provisioning - User Creation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49744921"
+	},
+	"item": [
+		{
+			"name": "1.Create users in bulk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"provision_ID\", pm.response.json().id);",
+							"",
+							"   "
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json,application/scim+json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\"\n    ],\n    \"failOnErrors\": 1,\n    \"Operations\": [\n        {\n            \"method\": \"POST\",\n            \"path\": \"/Users\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                    \"userName\": \"sandbox1.approver2@t1200339lpr6.com.uat\",\n                    \"active\": true,\n                    \"name\": {\n                        \"formatted\": \"sandbox1.approver2\",\n                        \"familyName\": \"approver2\",\n                        \"middleName\": \"M\",\n                        \"givenName\": \"sandbox1\"\n                    },\n                    \"emails\": [\n                        {\n                            \"value\": \"sandbox1.approver2@sandbox1.com\",\n                            \"type\": \"work\"\n                        }\n                    ],\n                    \"entitlements\": [\n                        \"Expense\",\n                        \"Travel\"  /*if travel module is applicable for the user */\n                    ],\n                \"urn:ietf:params:scim:schemas:extension:spend:2.0:Role\": {\n                    \"roles\": [\n                        {\n                            \"roleName\": \"EXP_APPROVER\"\n                        }\n                        ]\n                 },\n                \"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User\": {\n                    \"employeeNumber\": \"sandbox1approver2\",\n                    \"companyId\": \"{{companyID}}\"\n                },\n                \"urn:ietf:params:scim:schemas:extension:spend:2.0:User\": {\n                   \"ledgerCode\": \"DEFAULT\",\n                   \"country\": \"US\",\n                   \"locale\": \"en_US\",\n                   \"reimbursementCurrency\": \"USD\",\n                   \"cashAdvanceAccountCode\": \"10000\",\n                   \"testEmployee\": false,\n                   \"biManager\": {  /* if user already exists in Concur */\n                       \"value\": \"45b9734c-7904-44b3-8c77-40e8c58e1828\"\n                   },\n                   \"customData\": [\n                       {\n                           \"id\": \"orgUnit1\",\n                           \"value\": \"BU2\"\n                       },\n                       {\n                           \"id\": \"orgUnit2\",\n                           \"value\": \"CC1\"\n                       },\n                       {\n                           \"id\": \"orgUnit3\",\n                           \"value\": \"1234\"\n                       },\n                       {\n                           \"id\": \"orgUnit4\",\n                           \"value\": \"0000100000\"\n                       },\n                        {\n                           \"id\": \"orgUnit5\",\n                           \"value\": \"0000101111\"\n                       },\n                                              {\n                           \"id\": \"custom21\", /* employee group*/\n                           \"value\": \"US-SAE\"\n                       }\n                   ]\n                   },\n                   \"urn:ietf:params:scim:schemas:extension:travel:2.0:User\": {\n                        \"ruleClass\": {\n                            \"name\": \"Executive\"\n                        },\n                        \"gender\": \"Female\",\n                        \"travelNameRemark\": \"Testing1\",\n                        \"travelCrsName\": \"Testing Name1\"\n                        \n                   }\n            }\n        },\n         {\n            \"method\": \"POST\",\n            \"path\": \"/Users\",\n            \"bulkId\": \"bulk-operation-2\",\n            \"data\": {\n         \n                    \"userName\": \"sandbox1.user2@t1200339lpr6.com.uat\",\n                    \"active\": true,\n                    \"name\": {\n                        \"formatted\": \"sandbox1 user2\",\n                        \"familyName\": \"sandbox1\",\n                        \"givenName\": \"user2\"\n                    },\n                    \"emails\": [\n                        {\n                            \"value\": \"sandbox1.user2@sandbox1.com\",\n                            \"type\": \"work\"\n                        }\n                    ],\n                    \"timezone\": \"America/New_York\",\n                    \"entitlements\": [\n                        \"Expense\",\n                        \"Travel\"\n                    ],\n                \"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User\": {\n                    \"employeeNumber\": \"sandbox1user2\",\n                    \"companyId\": \"{{companyID}}\"\n                },\n                \"urn:ietf:params:scim:schemas:extension:spend:2.0:User\": {\n                   \"ledgerCode\": \"DEFAULT\",\n                   \"country\": \"US\",\n                   \"locale\": \"en_US\",\n                   \"reimbursementCurrency\": \"USD\",\n                   \"cashAdvanceAccountCode\": \"10000\",\n                   \"testEmployee\": false,\n                   \"customData\": [\n                       {\n                           \"id\": \"orgUnit1\",\n                           \"value\": \"BU2\"\n                       },\n                       {\n                           \"id\": \"orgUnit2\",\n                           \"value\": \"CC1\"\n                       },\n                       {\n                           \"id\": \"orgUnit3\",\n                           \"value\": \"5678\"\n                       },\n                       {\n                           \"id\": \"orgUnit4\",\n                           \"value\": \"0000100000\"\n                       },\n                                              {\n                           \"id\": \"orgUnit5\",\n                           \"value\": \"0000101111\"\n                       },\n                                              {\n                           \"id\": \"custom21\",\n                           \"value\": \"US\"\n                       }\n                   ]\n                   },\n                   \"urn:ietf:params:scim:schemas:extension:travel:2.0:User\": {\n                        \"ruleClass\": {\n                            \"name\": \"Test Rule Class\"\n                        },\n                        \"gender\": \"Male\",\n                        \"travelNameRemark\": \"Testing2\",\n                        \"travelCrsName\": \"Testing Name2\"\n                        }\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/v4/Bulk/",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"v4",
+						"Bulk",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. status check for user creation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"",
+							"   "
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function() {\r",
+							"    console.log(\"Waited 3 seconds...\");\r",
+							"}, 3000);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": false,
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json,application/scim+json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/v4/provisions/{{provision_ID}}/status?attributes=operations",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"v4",
+						"provisions",
+						"{{provision_ID}}",
+						"status"
+					],
+					"query": [
+						{
+							"key": "attributes",
+							"value": "operations"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. retrieve user by searching",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "concur-correlationid",
+						"value": "us2-murray"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"schemas\": [\r\n    \"urn:ietf:params:scim:api:messages:concur:2.0:SearchRequest\"\r\n  ],\r\n  \"count\": 10,\r\n  \"filter\": \"userName eq \\\"{{username}}\\\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/identity/v4.1/Users/.search?companyId={{companyID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"identity",
+						"v4.1",
+						"Users",
+						".search"
+					],
+					"query": [
+						{
+							"key": "companyId",
+							"value": "{{companyID}}"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --request POST \\\r\n  --url https://us.api.concursolutions.com/profile/identity/v4.1/Users/.search?companyId=foo \\\r\n  --header 'concur-correlationid: us2-murray' \\\r\n  --header 'content-type: application/json' \\\r\n  --data '{\r\n  \"schemas\": [\r\n    \"urn:ietf:params:scim:api:messages:concur:2.0:SearchRequest\"\r\n  ],\r\n  \"count\": 10,\r\n  \"filter\": \"userName ew \\\"sap.com\\\"\"\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Assign approvers in bulk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"provision_ID\", pm.response.json().id);",
+							"",
+							"   "
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json,application/scim+json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\",\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n\n    ],\n    \"failOnErrors\": 1,\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/e348c85f-1fc5-4ac9-83ff-108a4c2dd738\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    {\n                        \"op\": \"add\", /* add travel manager */\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:travel:2.0:User:manager\",\n                        \"value\":{ \n\n                                    \"employeeNumber\":\"sandbox1approver2\"\n                                }\n                            \n                        \n                    }\n                ]\n            }\n        },\n         {\n            \"method\": \"PATCH\", /* replacing existing direct manager and report approver */\n            \"path\": \"/Users/0743b493-7bfe-4103-95ea-838b21e82bf5\",\n            \"bulkId\": \"bulk-operation-2\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/v4/Bulk",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"v4",
+						"Bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. status check for assigning approvers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"",
+							"   "
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function() {\r",
+							"    console.log(\"Waited 3 seconds...\");\r",
+							"}, 3000);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": false,
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json,application/scim+json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/v4/provisions/{{provision_ID}}/status?attributes=operations",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"v4",
+						"provisions",
+						"{{provision_ID}}",
+						"status"
+					],
+					"query": [
+						{
+							"key": "attributes",
+							"value": "operations"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "dataCenterURI",
+			"value": ""
+		},
+		{
+			"key": "companyID",
+			"value": ""
+		},
+		{
+			"key": "provision_ID",
+			"value": ""
+		}
+	]
+}
