@@ -168,7 +168,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\",\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n\n    ],\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/cce6c7c3-b69a-4258-b6b4-97e76c081e9d\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"add\",  //use add to add new value\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    {\n                        \"op\": \"add\", /* add travel manager */\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:travel:2.0:User:manager\",\n                        \"value\":{ \n                                    \"employeeNumber\":\"sandbox1approver2\"\n                                }\n                            \n                        \n                    },\n                    {  //use replace to replace existing value\n                        \"op\":\"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:customData[id eq \\\"custom4\\\"].value\",\n                        \"value\": \"NewValue\"\n                    },\n                    { //use remove to remove the value\n                        \"op\": \"remove\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:user:customData[id eq \\\"orgUnit5\\\"]\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\"\n    ],\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/cce6c7c3-b69a-4258-b6b4-97e76c081e9d\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                \"schemas\":[\n                    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                    ], \n                    \"Operations\": [\n                    {\n                        \"op\": \"add\",  //use add to add new value\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    {\n                        \"op\": \"add\", /* add travel manager */\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:travel:2.0:User:manager\",\n                        \"value\":{ \n                                    \"employeeNumber\":\"sandbox1approver2\"\n                                }\n                            \n                        \n                    },\n                    {  //use replace to replace existing value\n                        \"op\":\"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:customData[id eq \\\"custom4\\\"].value\",\n                        \"value\": \"NewValue\"\n                    },\n                    { //use remove to remove the value\n                        \"op\": \"remove\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:user:customData[id eq \\\"orgUnit5\\\"]\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -283,9 +283,7 @@
 							"",
 							"   "
 						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -294,9 +292,7 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -320,7 +316,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\",\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n\n    ],\n    \"failOnErrors\": 1,\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/e348c85f-1fc5-4ac9-83ff-108a4c2dd738\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    {\n                        \"op\": \"add\", /* add travel manager */\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:travel:2.0:User:manager\",\n                        \"value\":{ \n\n                                    \"employeeNumber\":\"sandbox1approver2\"\n                                }\n                            \n                        \n                    }\n                ]\n            }\n        },\n         {\n            \"method\": \"PATCH\", /* replacing existing direct manager and report approver */\n            \"path\": \"/Users/0743b493-7bfe-4103-95ea-838b21e82bf5\",\n            \"bulkId\": \"bulk-operation-2\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\"\n\n    ],\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/e348c85f-1fc5-4ac9-83ff-108a4c2dd738\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                 \"schemas\":[\n                    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                    ], \n                    \"Operations\": [\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"add\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    {\n                        \"op\": \"add\", /* add travel manager */\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:travel:2.0:User:manager\",\n                        \"value\":{ \n\n                                    \"employeeNumber\":\"sandbox1approver2\"\n                                }\n                            \n                        \n                    }\n                ]\n            }\n        },\n         {\n            \"method\": \"PATCH\", /* replacing existing direct manager and report approver */\n            \"path\": \"/Users/0743b493-7bfe-4103-95ea-838b21e82bf5\",\n            \"bulkId\": \"bulk-operation-2\",\n            \"data\": {\n                  \"schemas\":[\n                    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                    ],\n                    \"Operations\": [\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"sandbox1approver2\"\n                        }\n                    },\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"sandbox1approver2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -386,7 +382,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\",\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n    ],\n    \"failOnErrors\": 1,\n    \"Operations\": [\n         {\n            \"method\": \"PATCH\", /* replacing existing direct manager and report approver */\n            \"path\": \"/Users/49ef4ba6-f2ca-4df5-a33b-622ed4ec295c\",\n            \"bulkId\": \"bulk-operation-2\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"executive2\"\n                        }\n                    },\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"executive2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    { //update family name\n                         \"op\":\"replace\",\n                         \"path\":\"name.familyName\",\n                         \"value\":\"William\"\n                    },\n                    {  //use replace to replace existing value\n                        \"op\":\"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:customData[id eq \\\"custom4\\\"].value\",\n                        \"value\": \"NewValue\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\"\n    ],\n    \"Operations\": [\n         {\n            \"method\": \"PATCH\", /* replacing existing direct manager and report approver */\n            \"path\": \"/Users/49ef4ba6-f2ca-4df5-a33b-622ed4ec295c\",\n            \"bulkId\": \"bulk-operation-2\",\n            \"data\": {\n                \"schemas\":[\n                    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                    ], \n                    \"Operations\": [\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\",\n                         \"value\": {\n                            \"employeeNumber\": \"executive2\"\n                        }\n                    },\n                    {\n                        \"op\": \"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:Approver:report\",\n                        \"value\": [\n                            {\n                                \"approver\":{ \"employeeNumber\":\"executive2\"},\n                                \"primary\": true\n                            }\n                        ]\n                    },\n                    { //update family name\n                         \"op\":\"replace\",\n                         \"path\":\"name.familyName\",\n                         \"value\":\"William\"\n                    },\n                    {  //use replace to replace existing value\n                        \"op\":\"replace\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:customData[id eq \\\"custom4\\\"].value\",\n                        \"value\": \"NewValue\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -452,7 +448,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\",\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n\n    ],\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/49ef4ba6-f2ca-4df5-a33b-622ed4ec295c\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                    \"Operations\": [\n                    {\n                        \"op\": \"remove\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\"\n                    },\n                    {\n                        \"op\": \"remove\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:user:customData[id eq \\\"custom5\\\"]\"\n                     },\n                     {\n                        \"op\":\"remove\",\n                         \"path\":\"urn:ietf:params:scim:schemas:extension:spend:2.0:Role:roles[roleName eq \\\"EXP_PROCESSOR\\\"]\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"schemas\": [\n        \"urn:ietf:params:scim:api:messages:2.0:BulkRequest\"\n\n    ],\n    \"Operations\": [\n        {\n            \"method\": \"PATCH\",\n            \"path\": \"/Users/49ef4ba6-f2ca-4df5-a33b-622ed4ec295c\",\n            \"bulkId\": \"bulk-operation-1\",\n            \"data\": {\n                \"schemas\":[\n                    \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                    ], \n                    \"Operations\": [\n                    {\n                        \"op\": \"remove\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:User:biManager\"\n                    },\n                    {\n                        \"op\": \"remove\",\n                        \"path\": \"urn:ietf:params:scim:schemas:extension:spend:2.0:user:customData[id eq \\\"custom5\\\"]\"\n                     },\n                     {\n                        \"op\":\"remove\",\n                         \"path\":\"urn:ietf:params:scim:schemas:extension:spend:2.0:Role:roles[roleName eq \\\"EXP_PROCESSOR\\\"]\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -469,6 +465,33 @@
 						"profile",
 						"v4",
 						"Bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Spend Form Fields v4.1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/profile/spend/v4.1/FormFields?userId={{userUUID}}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"profile",
+						"spend",
+						"v4.1",
+						"FormFields"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "{{userUUID}}"
+						}
 					]
 				}
 			},
